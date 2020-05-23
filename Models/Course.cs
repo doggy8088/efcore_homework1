@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace homework1.Models
 {
@@ -18,6 +19,7 @@ namespace homework1.Models
 
         public DateTime? DateModified { get; set; }
 
+        [JsonIgnore]
         public virtual Department Department { get; set; }
         public virtual ICollection<CourseInstructor> CourseInstructor { get; set; }
         public virtual ICollection<Enrollment> Enrollment { get; set; }
