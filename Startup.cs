@@ -28,7 +28,11 @@ namespace homework1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ContosoUniversityContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            {
+                options
+                    .UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            });
 
             services.AddControllers();
         }
