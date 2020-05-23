@@ -102,6 +102,11 @@ namespace homework1.Models
                     .HasConstraintName("FK_dbo.Department_dbo.Instructor_InstructorID");
             });
 
+            modelBuilder.Entity<部門課程數量表>(entity =>
+            {
+                entity.HasNoKey();
+            });
+
             modelBuilder.Entity<Enrollment>(entity =>
             {
                 entity.HasIndex(e => e.CourseId)

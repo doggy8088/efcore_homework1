@@ -43,6 +43,45 @@ namespace homework1.Controllers_
             return department;
         }
 
+        // GET: api/Departments/5/num
+        [HttpGet("{id}/num")]
+        public async Task<ActionResult<IList<部門課程數量表>>> Get部門課程數量表(int id)
+        {
+            var department = await _context.部門課程數量表.FromSqlInterpolated($@"SELECT
+                    DepartmentId as Id,
+                    Name,
+                    (SELECT COUNT(*) FROM dbo.Course c WHERE c.DepartmentID = d.DepartmentId) as num
+                FROM
+                    dbo.Department d
+                WHERE d.DepartmentId = {id}").ToListAsync();
+
+            if (department == null)
+            {
+                return NotFound();
+            }
+
+            return department;
+        }
+
+        // GET: api/Departments/5/num
+        [HttpGet("num")]
+        public async Task<ActionResult<IList<部門課程數量表>>> Get部門課程數量表All(int id)
+        {
+            var department = await _context.部門課程數量表.FromSqlInterpolated($@"SELECT
+                    0 as Id,
+                    Name,
+                    (SELECT COUNT(*) FROM dbo.Course c WHERE c.DepartmentID = d.DepartmentId) as num
+                FROM
+                    dbo.Department d").ToListAsync();
+
+            if (department == null)
+            {
+                return NotFound();
+            }
+
+            return department;
+        }
+
         // GET: api/Departments/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Department>> GetDepartment(int id)
