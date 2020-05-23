@@ -17,6 +17,12 @@ namespace homework1
 {
     public class Startup
     {
+        public static readonly ILoggerFactory MyLoggerFactory =
+            LoggerFactory.Create(builder =>
+            {
+                builder.AddConsole();
+            });
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -36,8 +42,9 @@ namespace homework1
             services.AddDbContext<ContosoUniversityContext>(options =>
             {
                 options
-                    .UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-                    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+                    .UseLoggerFactory(MyLoggerFactory)
+                    .UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                    // .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
 
             services.AddControllers();
