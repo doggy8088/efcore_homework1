@@ -31,12 +31,14 @@ namespace homework1.Controllers_
         [HttpGet("{id}/courses")]
         public async Task<ActionResult<IList<Course>>> GetDepartmentCourses(int id)
         {
-            var department = await _context.Department.Include("Course").FirstOrDefaultAsync(p => p.DepartmentId == id);
+            var department = await _context.Department.FindAsync(id);
 
             if (department == null)
             {
                 return NotFound();
             }
+
+            _context.Entry(department).Collection(p => p.Course).Load();
 
             return department.Course.ToList();
         }
