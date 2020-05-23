@@ -29,7 +29,7 @@ namespace homework1.Controllers_
 
         // GET: api/departments/5/courses
         [HttpGet("{id}/courses")]
-        public async Task<ActionResult<IList<Course>>> GetDepartmentCourses(int id)
+        public async Task<ActionResult<Department>> GetDepartmentCourses(int id)
         {
             var department = await _context.Department.FindAsync(id);
 
@@ -40,7 +40,7 @@ namespace homework1.Controllers_
 
             _context.Entry(department).Collection(p => p.Course).Load();
 
-            return department.Course.ToList();
+            return department;
         }
 
         // GET: api/Departments/5
