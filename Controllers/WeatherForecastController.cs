@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace homework1.Controllers
 {
     [ApiController]
+    [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {

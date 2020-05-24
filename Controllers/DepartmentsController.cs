@@ -11,6 +11,7 @@ namespace homework1.Controllers_
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiConventionType(typeof(DefaultApiConventions))]
     public class DepartmentsController : ControllerBase
     {
         private readonly ContosoUniversityContext _context;
