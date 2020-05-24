@@ -49,6 +49,8 @@ namespace homework1
 
             services.AddControllers();
                 //.AddNewtonsoftJson();
+
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +62,9 @@ namespace homework1
             }
 
             app.UseHttpsRedirection();
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseRouting();
 
