@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "homework1", "homework1\homework1.csproj", "{6CC52697-C5DA-408B-84BB-0A89A65DC776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "homework1", "homework1.csproj", "{6CC52697-C5DA-408B-84BB-0A89A65DC776}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMVC", "MyMVC\MyMVC.csproj", "{E99D9D87-5711-4CBB-9508-FBBE22AF926C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMVC", "..\MyMVC\MyMVC.csproj", "{E99D9D87-5711-4CBB-9508-FBBE22AF926C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

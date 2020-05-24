@@ -1,0 +1,5 @@
+GET https://localhost:44324/api/courses
+
+###
+
+GET https://localhost:44324/api/courses/1
