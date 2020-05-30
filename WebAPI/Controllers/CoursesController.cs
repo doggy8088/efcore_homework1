@@ -9,7 +9,7 @@ using homework1.Models;
 
 namespace homework1.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/courses")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
     public class CoursesController : ControllerBase
@@ -22,10 +22,10 @@ namespace homework1.Controllers
         }
 
         // GET: api/Courses
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
+        [HttpGet("~/courses")]
+        public async Task<IActionResult> GetCourse()
         {
-            return await _context.Course.ToListAsync();
+            return Ok(await _context.Course.ToListAsync());
         }
 
         // GET: api/Courses/5
