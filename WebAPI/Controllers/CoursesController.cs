@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using homework1.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using homework1.Models;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace homework1.Controllers
 {
@@ -15,9 +17,11 @@ namespace homework1.Controllers
     public class CoursesController : ControllerBase
     {
         private readonly ContosoUniversityContext _context;
+        private readonly ILogger<CoursesController> logger;
 
-        public CoursesController(ContosoUniversityContext context)
+        public CoursesController(ContosoUniversityContext context, ILogger<CoursesController> logger)
         {
+            this.logger = logger;
             _context = context;
         }
 
@@ -25,6 +29,8 @@ namespace homework1.Controllers
         [HttpGet("~/courses")]
         public async Task<IActionResult> GetCourse()
         {
+            this.logger.LogInformation("Hello GetCourse All.");
+
             return Ok(await _context.Course.ToListAsync());
         }
 
@@ -36,8 +42,11 @@ namespace homework1.Controllers
 
             if (course == null)
             {
+                Log.Warning("GetCourseById {id} NOT FOUND", id);
                 return NotFound();
             }
+
+            Log.Information("GetCourseById {id} Found", id);
 
             return course;
         }
