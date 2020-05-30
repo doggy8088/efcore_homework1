@@ -43,6 +43,8 @@ namespace homework1
             // services.AddDbContext<ContosoUniversityContext>(options =>
             //     options.UseSqlite("Data Source=Database.db")));
 
+            services.Configure<AppSettings>(Configuration.GetSection("JwtSettings"));
+
             services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
